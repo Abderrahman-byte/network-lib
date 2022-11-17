@@ -4,5 +4,5 @@ A cpp cross-platform networking library.
 
 ## TODO
 
-- [ ] Add TCP for linux
-- [ ] Add TCP for windows
+- [ ] TCP server socket for linux
+- [ ] TCP server socket for windows
