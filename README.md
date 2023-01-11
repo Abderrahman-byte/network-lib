@@ -4,5 +4,6 @@ A cpp cross-platform networking library.
 
 ## TODO
 
-- [ ] TCP server socket for linux
-- [ ] TCP server socket for windows
+- [ ] Implement ``Socket`` class on Linux and Windows
+- [ ] Test tcp and udp functions in ``Socket``
+- [ ] Implement and throw exceptions for ``Socket functions``
