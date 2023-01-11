@@ -1,5 +1,7 @@
 #include <string>
 
+#include "libnet/config.hpp"
+
 #ifdef __unix__
 
 #include <netinet/in.h>
@@ -13,61 +15,118 @@
 #ifndef _LIBNET_SOCKET_
 #define _LIBNET_SOCKET_ 1
 
-#define DEFAULT_BACKLOG_SIZE 1280
-
-#ifdef __unix__         
-
-typedef int socket_t; // Just an alias for socket() return type
-#define INVALID_SOCKET -1;
-
-#elif defined(_WIN32) || defined(WIN32)
-
-typedef unsigned int socket_t;
-
-#endif
-
-// Reference to Transport-Layer protocol
+/**
+ * @brief Reference to Transport-Layer protocol
+ * @date 2023-01-10
+ **/
 enum class SocketType { 
     tcp,
     udp
 };
 
-// This class is a wrapper for native socket 
-// its purpose to be used as an platform agnostic API
-
+/**
+ * @brief A class wrapper for native socket 
+ * @details the main purpose is to provide a platform agnostic API for socket programming
+ * @date 2023-01-10
+**/ 
 class Socket {
     private :
         socket_t socket = INVALID_SOCKET;
         struct sockaddr_in address;
 
     public :
-        // this constructor is used to create new socket
+        /** 
+         * @brief this constructor is used to create new socket 
+         * @param type specifies if socket is tcp or udp
+         **/
         Socket(SocketType type); 
 
-        // this constructor wrappes an already existing socket
-        Socket(socket_t);
+        /**
+         * @brief this constructor wrappes an already existing socket 
+         * @param socket the socket file descriptor
+         *
+         **/
+        Socket(socket_t socket);
         
-        int getFd ();
+        /**
+         * @brief Returns the file descriptor for the socket
+         * @return the file descriptor of the socket
+         **/        
+        socket_t getFd ();
 
-        // Bind a socket to an ip address and port
+        /** 
+         * @brief Bind a socket to an ip address and port
+         * @param ip_address the ip address
+         * @param port the port
+         **/
         void bind (const char *ip_address, uint16_t port);
-        void bind (std::string ip_address, uint16_t port);
-    
-        void listen (); // used in Server side
 
-        // Set/unset O_NONBLOCK flag
+        /** 
+         * @brief Bind a socket to an ip address and port 
+         * @param ip_address the ip address
+         * @param port the port
+         **/
+        void bind (std::string ip_address, uint16_t port);
+
+        /**
+         * @brief Start listenning for incomming request
+         * @details This method is used in the server side.
+         **/
+        void listen ();
+
+        /**
+         * @brief Set/unset O_NONBLOCK flag 
+         * @param blocking specifies to set or unset the flag
+         **/
         void setBlocking (bool blocking);
+
+        /**
+         * @brief Checks if O_NONBLOCK is set
+         * @return true if the socket is set to non-blocking
+         **/
         bool getBlocking (); 
         
-        // Flags are not supported
+        /**
+         * @brief Sends data to the other end of the socket
+         * @param[in] buffer the data to be sent
+         * @param len the length of the data
+         **/
         void send (char *buffer, int len);
+
+        /**
+         * @brief Receives data from the other end of the socket
+         * @param[out] buffer a buffer array where to put the received data
+         * @param len The buffer length
+         * @return the length of the received data
+         **/
         int recv (char *buffer, int len);
         
-        void connect(char const *ip, uint16_t); // Used in the client side to connect to a server
-        void connect(std::string ip, uint16_t); 
+        /**
+         * @brief Connect to a server socket
+         * @param ip the ip address of the server
+         * @param port the port of the server
+         * @details This method is only used in the client-side in tcp socket
+         **/
+        void connect(char const *ip, uint16_t port); // Used in the client side to connect to a server
 
+        /**
+         * @brief Connect to a server socket
+         * @param ip the ip address of the server
+         * @param port the port of the server
+         * @details This method is only used in the client-side in tcp socket
+         **/
+        void connect(std::string ip, uint16_t port); 
+        
+        /**
+         * @brief Accept incomming tcp connection
+         * @details This method is only used in tcp server-side
+         * @return A refrence to the client socket 
+         **/
         Socket accept(); // used in connection-based server side
 
+        /**
+         * @brief Close the socket
+         **/
         void close ();
 };
 

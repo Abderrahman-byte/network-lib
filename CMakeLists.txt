@@ -19,6 +19,10 @@ include_directories(./includes/)
 
 add_library(net ${SRC})
 
+if(BUILD_DOC)
+    add_subdirectory(docs)
+endif()
+
 # if (BUILD_TESTS)
 #     add_subdirectory(./test)
 # endif()
