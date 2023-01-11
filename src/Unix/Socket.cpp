@@ -17,11 +17,11 @@ Socket::Socket(socket_t socket) {
     // Get file descriptor flags to check if fd is valid
     // Just a cheap trick to check socket is valid
     
-    int f = fcntl(socket, F_GETFD);
+    int flags = fcntl(socket, F_GETFD);
 
     // if fd is invalid fcntl will return -1
 
-    if (f < 0) {
+    if (flags < 0) {
         // TODO Must Throw error if this failes
     }   
 
@@ -121,4 +121,10 @@ void Socket::connect(const char *ip_address, uint16_t port) {
 
 void Socket::connect(std::string ip_address, uint16_t port) {
     this->connect(ip_address.c_str(), port);
+}
+
+bool Socket::getBlocking() {
+    int flags = fcntl(this->socket, F_GETFL);
+
+    return flags & O_NONBLOCK;    
 }
