@@ -1,28 +1,39 @@
 #include <string>
 
-#include "libnet/config.hpp"
+
 
 #ifdef __unix__
 
-#include <netinet/in.h>
+    #include <netinet/in.h>
 
 #endif // Unix-like platform specific includes
+
 
 #if defined(_WIN32) || defined(WIN32) 
 
 #endif // Windows includes
 
+
+
+#include "libnet/config.hpp"
+
+
+
 #ifndef _LIBNET_SOCKET_
 #define _LIBNET_SOCKET_ 1
+
 
 /**
  * @brief Reference to Transport-Layer protocol
  * @date 2023-01-10
  **/
 enum class SocketType { 
+    /// TCP connection-based socket type
     tcp,
+    /// UDP connection-less socket type 
     udp
 };
+
 
 /**
  * @brief A class wrapper for native socket 
@@ -107,7 +118,7 @@ class Socket {
          * @param port the port of the server
          * @details This method is only used in the client-side in tcp socket
          **/
-        void connect(char const *ip, uint16_t port); // Used in the client side to connect to a server
+        void connect(char const *ip, uint16_t port); 
 
         /**
          * @brief Connect to a server socket
@@ -122,13 +133,12 @@ class Socket {
          * @details This method is only used in tcp server-side
          * @return A refrence to the client socket 
          **/
-        Socket accept(); // used in connection-based server side
+        Socket accept(); 
 
         /**
          * @brief Close the socket
          **/
         void close ();
 };
-
 
 #endif // !_LIBNET_SOCKET_

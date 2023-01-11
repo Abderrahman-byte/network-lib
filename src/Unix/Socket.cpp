@@ -125,6 +125,8 @@ void Socket::connect(std::string ip_address, uint16_t port) {
 
 bool Socket::getBlocking() {
     int flags = fcntl(this->socket, F_GETFL);
+    
+    bool non_block_flag_set = flags & O_NONBLOCK;
 
-    return flags & O_NONBLOCK;    
+    return !non_block_flag_set;
 }

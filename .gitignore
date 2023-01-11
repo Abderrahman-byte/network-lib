@@ -34,4 +34,11 @@
 .vscode
 
 build
-.cache
+cmake-build-*/
+
+.cache/
+.vscode/
+.idea/
+.vs/
+
+Testing/
