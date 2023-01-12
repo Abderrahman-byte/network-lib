@@ -12,6 +12,8 @@ A cpp cross-platform networking library.
 
 This library uses cmake as the build system.
 
+**Note : Make sure cmake is installed.**
+
 - The make the build and compile run the commands :
 
 ```bash
@@ -19,6 +21,8 @@ mkdir ./build # if it doesn't exist
 cmake -S . -B ./build/
 cmake --build ./build/
 ```
+
+The library is compiled in ``./build/liblibnet.a``.
 
 - To run tests :
 
@@ -36,3 +40,5 @@ cmake -DBUID_DOCS=true -S . -B ./build/
 ```
 
 the generation documentation is in ``./build/docs/html/``.
+
+**Note : Make sure doxygen is installed.**
