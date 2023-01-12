@@ -12,7 +12,7 @@ A cpp cross-platform networking library.
 
 This library uses cmake as the build system.
 
-- The make the build and compile run the command :
+- The make the build and compile run the commands :
 
 ```bash
 mkdir ./build # if it doesn't exist
@@ -29,7 +29,7 @@ cd build/test
 ctest
 ```
 
-- To build documentation using doxygen :
+- To build the documentation files using doxygen :
 
 ```bash
 cmake -DBUID_DOCS=true -S . -B ./build/
