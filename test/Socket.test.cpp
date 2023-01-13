@@ -4,26 +4,37 @@
 #include "libnet/Socket.hpp"
 #include "libnet/config.hpp"
 
-TEST(Socket, SocketCreate) {
-    Socket socket(SocketType::tcp);
+class SocketTest : public ::testing::Test {
+    protected:
+        Socket socket;
 
-    EXPECT_NE(INVALID_SOCKET, socket.getFd()); 
+        void SetUp() override {
+            this->socket = Socket(SocketType::tcp);
+        }
+        
+        void TearDown() override {
+            this->socket.close();
+        }
+};
 
-    socket.close();
-}
+TEST_F(SocketTest, Basics) {
+    ASSERT_NE(INVALID_SOCKET, socket.getFd()); // Check if socket is invalid 
 
-TEST(Socket, SocketNONBLOCK) {
-    Socket socket(SocketType::tcp);
+    ASSERT_TRUE(socket.isValid()); // Check if socket is invalid 
 
-    ASSERT_TRUE(socket.getBlocking());
+    ASSERT_TRUE(socket.getBlocking()) << "Socket should be blocking by default"; 
     
     socket.setBlocking(false);
 
-    ASSERT_FALSE(socket.getBlocking());
+    ASSERT_FALSE(socket.getBlocking()) << "Socket should be non-block after setBlocking(false)";
 
     socket.setBlocking(true);
 
-    ASSERT_TRUE(socket.getBlocking()); 
+    ASSERT_TRUE(socket.getBlocking()) << "Socket should be non-block after setBlocking(false)";
+}
 
-    socket.close();
+TEST(Socket, InvalidSocket) {
+    Socket socket;
+
+    EXPECT_FALSE(socket.isValid());
 }
