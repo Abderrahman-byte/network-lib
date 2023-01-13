@@ -5,4 +5,4 @@ cwd=$(pwd)
 
 ./build.sh
 
-cd $BASE/build/test/ && ctest --output-on-failure -vv ; cd $cwd
+cd $BASE/build/ && ctest --output-on-failure -vv ; cd $cwd
