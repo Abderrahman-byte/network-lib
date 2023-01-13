@@ -3,7 +3,12 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
+#include "libnet/config.hpp"
 #include "libnet/Socket.hpp"
+
+Socket::Socket () {
+    this->socket = INVALID_SOCKET;
+}
 
 Socket::Socket(SocketType type) {
     int t = type == SocketType::tcp ? SOCK_STREAM : SOCK_DGRAM;
@@ -129,4 +134,9 @@ bool Socket::getBlocking() {
     bool non_block_flag_set = flags & O_NONBLOCK;
 
     return !non_block_flag_set;
+}
+
+// FIXME this just check if socket fd greater than -1. MUST find more efficent way to do this
+bool Socket::isValid() {
+    return this->socket > INVALID_SOCKET;
 }

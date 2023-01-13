@@ -1,7 +1,5 @@
 #include <string>
 
-
-
 #ifdef __unix__
 
     #include <netinet/in.h>
@@ -16,23 +14,11 @@
 
 
 #include "libnet/config.hpp"
-
+#include "libnet/SocketType.hpp"
 
 
 #ifndef _LIBNET_SOCKET_
 #define _LIBNET_SOCKET_ 1
-
-
-/**
- * @brief Reference to Transport-Layer protocol
- * @date 2023-01-10
- **/
-enum class SocketType { 
-    /// TCP connection-based socket type
-    tcp,
-    /// UDP connection-less socket type 
-    udp
-};
 
 
 /**
@@ -42,10 +28,15 @@ enum class SocketType {
 **/ 
 class Socket {
     private :
-        socket_t socket = INVALID_SOCKET;
+        socket_t socket;
         struct sockaddr_in address;
 
     public :
+        /** 
+         * @brief Default constructor that creates an invalid socket 
+         **/
+        Socket ();
+
         /** 
          * @brief this constructor is used to create new socket 
          * @param type specifies if socket is tcp or udp
@@ -55,7 +46,6 @@ class Socket {
         /**
          * @brief this constructor wrappes an already existing socket 
          * @param socket the socket file descriptor
-         *
          **/
         Socket(socket_t socket);
         
@@ -139,6 +129,12 @@ class Socket {
          * @brief Close the socket
          **/
         void close ();
+
+        /**
+        * @brief Checks if the socket is valid
+        * @return true if the socket is valid
+        **/
+        bool isValid ();
 };
 
 #endif // !_LIBNET_SOCKET_
