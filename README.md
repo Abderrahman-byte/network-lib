@@ -17,7 +17,6 @@ This library uses cmake as the build system.
 - The make the build and compile run the commands :
 
 ```bash
-mkdir ./build # if it doesn't exist
 cmake -S . -B ./build/
 cmake --build ./build/
 ```
