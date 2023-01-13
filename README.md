@@ -2,6 +2,8 @@
 
 A cpp cross-platform networking library.
 
+[documentation](https://abderrahman-byte.github.io/network-lib/index.html).
+
 ## TODO
 
 - [ ] Implement ``Socket`` class on Linux and Windows
