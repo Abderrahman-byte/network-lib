@@ -30,7 +30,7 @@ The library is compiled in ``./build/liblibnet.a``.
 ```bash
 cmake -DBUILT_TESTS=true -S . -B ./build/
 cmake --build ./build/
-cd build/test
+cd build
 ctest
 ```
 
