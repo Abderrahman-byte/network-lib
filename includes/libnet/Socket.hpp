@@ -92,7 +92,7 @@ class Socket {
          * @param[in] buffer the data to be sent
          * @param len the length of the data
          **/
-        void send (char *buffer, int len);
+        void send (const char *buffer, int len);
 
         /**
          * @brief Receives data from the other end of the socket
@@ -108,7 +108,7 @@ class Socket {
          * @param port the port of the server
          * @details This method is only used in the client-side in tcp socket
          **/
-        void connect(char const *ip, uint16_t port); 
+        void connect(const char *ip, uint16_t port);
 
         /**
          * @brief Connect to a server socket

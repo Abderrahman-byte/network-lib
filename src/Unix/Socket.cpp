@@ -91,7 +91,7 @@ Socket Socket::accept() {
 }
         
 // Flags are not supported
-void Socket::send (char *buffer, int len) {
+void Socket::send (const char *buffer, int len) {
     int send_ret = ::send(this->socket, buffer, len, 0);
 
     if (send_ret < 0) {
