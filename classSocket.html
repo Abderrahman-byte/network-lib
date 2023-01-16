@@ -110,15 +110,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a65b6cdda8e82b068736a87141a5f2f92"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocket.html#a65b6cdda8e82b068736a87141a5f2f92">getBlocking</a> ()</td></tr>
 <tr class="memdesc:a65b6cdda8e82b068736a87141a5f2f92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if O_NONBLOCK is set.  <br /></td></tr>
 <tr class="separator:a65b6cdda8e82b068736a87141a5f2f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8809ecac90b8481c4ac3f28c78ec254"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocket.html#ab8809ecac90b8481c4ac3f28c78ec254">send</a> (char *buffer, int len)</td></tr>
-<tr class="memdesc:ab8809ecac90b8481c4ac3f28c78ec254"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends data to the other end of the socket.  <br /></td></tr>
-<tr class="separator:ab8809ecac90b8481c4ac3f28c78ec254"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22d046b296341d3680e245337b42d8a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocket.html#a22d046b296341d3680e245337b42d8a2">send</a> (const char *buffer, int len)</td></tr>
+<tr class="memdesc:a22d046b296341d3680e245337b42d8a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends data to the other end of the socket.  <br /></td></tr>
+<tr class="separator:a22d046b296341d3680e245337b42d8a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88a5ba661957a07c0b0ed8c696344403"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocket.html#a88a5ba661957a07c0b0ed8c696344403">recv</a> (char *buffer, int len)</td></tr>
 <tr class="memdesc:a88a5ba661957a07c0b0ed8c696344403"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receives data from the other end of the socket.  <br /></td></tr>
 <tr class="separator:a88a5ba661957a07c0b0ed8c696344403"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8452efdaca580c2e3fc12653a005e98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocket.html#ae8452efdaca580c2e3fc12653a005e98">connect</a> (char const *ip, uint16_t port)</td></tr>
-<tr class="memdesc:ae8452efdaca580c2e3fc12653a005e98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to a server socket.  <br /></td></tr>
-<tr class="separator:ae8452efdaca580c2e3fc12653a005e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90fdf3c1f3d481b534fd6329b3f4912b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocket.html#a90fdf3c1f3d481b534fd6329b3f4912b">connect</a> (const char *ip, uint16_t port)</td></tr>
+<tr class="memdesc:a90fdf3c1f3d481b534fd6329b3f4912b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to a server socket.  <br /></td></tr>
+<tr class="separator:a90fdf3c1f3d481b534fd6329b3f4912b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a520a4640b9036482290a1be8944ec0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocket.html#a3a520a4640b9036482290a1be8944ec0">connect</a> (std::string ip, uint16_t port)</td></tr>
 <tr class="memdesc:a3a520a4640b9036482290a1be8944ec0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to a server socket.  <br /></td></tr>
 <tr class="separator:a3a520a4640b9036482290a1be8944ec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -323,8 +323,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae8452efdaca580c2e3fc12653a005e98" name="ae8452efdaca580c2e3fc12653a005e98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8452efdaca580c2e3fc12653a005e98">&#9670;&#160;</a></span>connect() <span class="overload">[1/2]</span></h2>
+<a id="a90fdf3c1f3d481b534fd6329b3f4912b" name="a90fdf3c1f3d481b534fd6329b3f4912b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90fdf3c1f3d481b534fd6329b3f4912b">&#9670;&#160;</a></span>connect() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -332,7 +332,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void Socket::connect </td>
           <td>(</td>
-          <td class="paramtype">char const *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>ip</em>, </td>
         </tr>
         <tr>
@@ -517,8 +517,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab8809ecac90b8481c4ac3f28c78ec254" name="ab8809ecac90b8481c4ac3f28c78ec254"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8809ecac90b8481c4ac3f28c78ec254">&#9670;&#160;</a></span>send()</h2>
+<a id="a22d046b296341d3680e245337b42d8a2" name="a22d046b296341d3680e245337b42d8a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22d046b296341d3680e245337b42d8a2">&#9670;&#160;</a></span>send()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -526,7 +526,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void Socket::send </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
         </tr>
         <tr>
