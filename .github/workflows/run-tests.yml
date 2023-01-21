@@ -25,7 +25,7 @@ jobs:
       - name: Install CMake and Doxygen
         run: sudo apt-get update && sudo apt-get install -y cmake doxygen
       - name: Build
-        run: cmake -DBUILD_DOC=true -S . -B ./build && cmake --build ./build
+        run: cmake -DDOC_ONLY=true -S . -B ./build && cmake --build ./build
       - name: Publish documentation
         uses: JamesIves/github-pages-deploy-action@v4
         with:
