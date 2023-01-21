@@ -13,11 +13,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install CMake
-        run: sudo apt-get update && sudo apt-get install -y cmake doxygen
+        run: sudo apt-get update && sudo apt-get install -y cmake
       - name: Build
-        run: cmake -DBUILD_DOC=true -DBUILD_TESTS=true -S . -B ./build && cmake --build ./build
+        run: cmake -DBUILD_TESTS=true -S . -B ./build && cmake --build ./build
       - name: Run tests
         run: cd ./build &&  ctest --output-on-failure -vv ; cd ..
+  deploy-doc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install CMake and Doxygen
+        run: sudo apt-get update && sudo apt-get install -y cmake doxygen
+      - name: Build
+        run: cmake -DBUILD_DOC=true -S . -B ./build && cmake --build ./build
       - name: Publish documentation
         uses: JamesIves/github-pages-deploy-action@v4
         with:
