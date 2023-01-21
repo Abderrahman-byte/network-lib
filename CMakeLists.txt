@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.11)
-
 project (networking_lib VERSION 0.9.1)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -15,15 +14,17 @@ else ()
     list(APPEND SRC ${SRCROOT}/Unix/Socket.cpp)
 endif()
 
-include_directories(./includes/)
 
-add_library(libnet ${SRC})
-
-if(BUILD_DOC)
+if(DOC_ONLY)
     add_subdirectory(docs)
+else()
+    add_library(libnet ${SRC})
+
+    target_include_directories(libnet PUBLIC ./includes/)
+    
+    if (BUILD_TESTS)
+        enable_testing()
+        add_subdirectory(./test)
+    endif()
 endif()
 
-if (BUILD_TESTS)
-    enable_testing()
-    add_subdirectory(./test)
-endif()
