@@ -9,6 +9,7 @@ A cpp cross-platform networking library.
 - [ ] Implement ``Socket`` class on Linux and Windows
 - [ ] Test tcp and udp functions in ``Socket``
 - [ ] Implement and throw exceptions for ``Socket functions`` something like [this](https://stackoverflow.com/questions/12171377/how-to-convert-errno-to-exception-using-system-error).
+- [ ] Use addrinfo to parse address/hostname and port
 
 ## Compilation
 
