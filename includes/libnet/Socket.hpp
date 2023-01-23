@@ -117,6 +117,13 @@ class Socket {
          * @details This method is only used in the client-side in tcp socket
          **/
         void connect(std::string ip, uint16_t port); 
+
+
+        /**
+         * @brief Checks if socket is closed
+         * @return true if socket is open
+         **/
+        bool isClosed();
         
         /**
          * @brief Accept incomming tcp connection

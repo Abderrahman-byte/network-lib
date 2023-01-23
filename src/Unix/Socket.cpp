@@ -1,3 +1,4 @@
+#include <cerrno>
 #include <sys/socket.h>
 #include <fcntl.h>
 #include <arpa/inet.h>
@@ -139,4 +140,21 @@ bool Socket::getBlocking() {
 // FIXME this just check if socket fd greater than -1. MUST find more efficent way to do this
 bool Socket::isValid() {
     return this->socket > INVALID_SOCKET;
+}
+
+// FIXME this works only on client socket accepted by the server
+bool Socket::isClosed() {
+    char x;
+    
+    int len = ::recv(this->socket, &x, 1, MSG_DONTWAIT | MSG_PEEK);
+
+    if (len >= 0) return len == 0;
+
+    int err = errno; 
+    
+    if (err == EAGAIN || err == ETIMEDOUT || err == ENOTCONN) return false;
+
+    // TODO MUST throw exception that handles other types of errors
+
+    return false;
 }
