@@ -19,7 +19,7 @@ class SocketTest : public ::testing::Test {
         }
         
         void TearDown() override {
-            this->socket.close();
+            if (!this->socket.isClosed()) this->socket.close();
         }
 };
 
@@ -37,6 +37,8 @@ TEST_F(SocketTest, Basics) {
     socket.setBlocking(true);
 
     ASSERT_TRUE(socket.getBlocking()) << "Socket should be non-block after setBlocking(false)";
+
+    ASSERT_FALSE(socket.isClosed());
 }
 
 // Testing socket as echo client
@@ -58,6 +60,10 @@ TEST_F(SocketTest, TCPClient) {
         
         EXPECT_EQ(strcmp(recvbuff, data[i].c_str()), 0);
     }
+
+    socket.close();
+    
+    ASSERT_TRUE(socket.isClosed());
 }
 
 TEST(Socket, InvalidSocket) {

@@ -121,7 +121,7 @@ class Socket {
 
         /**
          * @brief Checks if socket is closed
-         * @return true if socket is open
+         * @return true if socket is closed
          **/
         bool isClosed();
         

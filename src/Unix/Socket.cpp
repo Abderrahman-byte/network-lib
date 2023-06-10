@@ -1,4 +1,5 @@
 #include <cerrno>
+#include <iostream>
 #include <sys/socket.h>
 #include <fcntl.h>
 #include <arpa/inet.h>
@@ -151,7 +152,7 @@ bool Socket::isClosed() {
     if (len >= 0) return len == 0;
 
     int err = errno; 
-    
+
     if (err == EAGAIN || err == ETIMEDOUT || err == ENOTCONN) return false;
 
     // TODO MUST throw exception that handles other types of errors
